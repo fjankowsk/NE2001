@@ -21,7 +21,7 @@ c        data nu/1./
 	data rad/57.2957795/
 
 	real vperp
-        data vperp/100./
+c        data vperp/100./
 
 c functions:
 
@@ -41,6 +41,8 @@ c functions:
 	   call getarg(4, inbuf)
 	   read(inbuf, *) nu
 	   call getarg(5, inbuf)
+	   read(inbuf, *) vperp
+	   call getarg(6, inbuf)
 	   read(inbuf, *) ndir
 	else
 	   write(*,*) 'Usage: NE2001 l b DM/D ndir'
@@ -48,11 +50,12 @@ c functions:
            write(*,*) '       b (deg)'
            write(*,*) '       DM/D (pc cm^{-3} or kpc)'
            write(*,*) '       freq [GHz]'
+           write(*,*) '       vperp [km/s]'
            write(*,*) '       ndir = 1 (DM->D)   -1 (D->DM) '
 	   stop
         endif
 
-	write(*,*)'#NE2001 input: 5 parameters'
+	write(*,*)'#NE2001 input: 6 parameters'
 	write(*,"(f10.4, t20, a, t30, a, t55, a)") 
      .        ldeg, 'l', '(deg)', 'GalacticLongitude'
 	write(*,"(f10.4, t20, a, t30, a, t55, a)") 
@@ -62,6 +65,8 @@ c functions:
      .        'Input_DM_or_Distance'
 	write(*,"(f10.4, t20, a, t30, a, t55, a)") 
      .        nu, 'freq', '[GHz]', 'Observing frequency'
+	write(*,"(f10.4, t20, a, t30, a, t55, a)") 
+     .        vperp, 'vperp', '[km/s]', 'Transverse speed'
 	write(*,"(i10, t20, a, t30, a, t55, a)") 
      .        ndir, 'ndir', '1:DM->D;-1:D->DM', 'Which?(DM_or_D)'
 	write(*,*)'#NE2001 output: 14 values'
@@ -126,7 +131,7 @@ c calculate scattering parameters
      .           'ScintBW' 
 	write(*,"(e10.4, t20, a, t30, a, t55, a)") stime, 'SCINTIME', 
      .           '(s)', 
-     .           'ScintTime @100 km/s' 
+     .           'ScintTime' 
 	write(*,"(e10.4, t20, a, t30, a, t55, a)") theta_g, 'THETA_G', 
      .           '(mas)', 
      .           'AngBroadeningGal' 
