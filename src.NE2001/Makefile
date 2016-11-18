@@ -11,8 +11,7 @@ ARFLAGS = rc
 FFLAGS  = -O -std=gnu
 LDFLAGS = -s
 #
-#BINDIR = ../bin.NE2001
-BINDIR = /home/fjanky/temp/NE2001
+BINDIR = ~/temp/NE2001
 #
 # Nothing below here should need to be changed.
 ########################################################################
