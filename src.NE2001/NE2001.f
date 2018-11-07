@@ -31,7 +31,7 @@ c functions:
 	real transition_frequency
 
 	nargs = iargc()
-	if(nargs .ge. 1) then
+	if(nargs .eq. 6) then
 	   call getarg(1, inbuf)
 	   read(inbuf, *) ldeg
 	   call getarg(2, inbuf)
@@ -45,7 +45,7 @@ c functions:
 	   call getarg(6, inbuf)
 	   read(inbuf, *) ndir
 	else
-	   write(*,*) 'Usage: NE2001 l b DM/D ndir'
+	   write(*,*) 'Usage: NE2001 l b DM/D freq vperp ndir'
            write(*,*) '       l (deg)'
            write(*,*) '       b (deg)'
            write(*,*) '       DM/D (pc cm^{-3} or kpc)'
